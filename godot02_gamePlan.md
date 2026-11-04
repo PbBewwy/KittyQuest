@@ -132,7 +132,7 @@ Add an entry **at the end of every lab day**, then push. Two or three sentences 
 **What are we doing next time?**
 
 
-**Is anything stuck or broken?**
+**Is anything stuck or broken?** The door collision didn't work as I would like it to.
 
 
 ### Day 2

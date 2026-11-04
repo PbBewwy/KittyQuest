@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 const SPEED = 50.0
 
@@ -8,6 +9,23 @@ func _physics_process(_delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var directionx := Input.get_axis("move_left", "move_right")
 	var directiony := Input.get_axis("move_up", "move_down")
+	
+	# Animations
+	if directiony <= -1:
+		animated_sprite.play("back")
+	if directiony >= 1:
+		animated_sprite.play("front")
+	
+	if directionx <= -1:
+		animated_sprite.play("left_right")
+		animated_sprite.flip_h = true
+	if directionx >= 1:
+		animated_sprite.play("left_right")
+		animated_sprite.flip_h = false
+	
+	if directionx == 0 and directiony == 0:
+		animated_sprite.pause()
+	
 	if directionx:
 		velocity.x = directionx * SPEED 
 	else:
