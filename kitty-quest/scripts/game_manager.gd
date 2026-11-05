@@ -12,3 +12,13 @@ func check_keys():
 
 func remove_key():
 	keys -= 1
+
+func add_yarn():
+	yarn += 1
+	print("yarning is yarn ", yarn)
+
+func check_yarn():
+	return yarn
+
+func remove_yarn(remove):
+	yarn -= remove

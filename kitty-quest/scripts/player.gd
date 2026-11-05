@@ -5,35 +5,24 @@ extends CharacterBody2D
 const SPEED = 50.0
 
 func _physics_process(_delta: float) -> void:
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var directionx := Input.get_axis("move_left", "move_right")
-	var directiony := Input.get_axis("move_up", "move_down")
+	# Get 2D input vector and normalize it so diagonal movement isn't faster
+	var input_direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
-	# Animations
-	if directiony <= -1:
-		animated_sprite.play("back")
-	if directiony >= 1:
-		animated_sprite.play("front")
+	# Handle movement
+	velocity = input_direction * SPEED
 	
-	if directionx <= -1:
-		animated_sprite.play("left_right")
-		animated_sprite.flip_h = true
-	if directionx >= 1:
-		animated_sprite.play("left_right")
-		animated_sprite.flip_h = false
-	
-	if directionx == 0 and directiony == 0:
-		animated_sprite.pause()
-	
-	if directionx:
-		velocity.x = directionx * SPEED 
+	# Handle animations
+	if input_direction != Vector2.ZERO:
+		# Update animation based on dominant movement axis
+		if abs(input_direction.x) >= abs(input_direction.y):
+			animated_sprite.play("left_right")
+			animated_sprite.flip_h = input_direction.x < 0
+		elif input_direction.y < 0:
+			animated_sprite.play("back")
+		elif input_direction.y > 0:
+			animated_sprite.play("front")
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-	
-	if directiony:
-		velocity.y = directiony * SPEED
-	else:
-		velocity.y = move_toward(velocity.y, 0, SPEED)
+		# Stop animation when not moving (or play an "idle" animation)
+		animated_sprite.stop()
 
 	move_and_slide()
