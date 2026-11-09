@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://if76k81l8t8o"]
+
+[ext_resource type="Texture2D" uid="uid://dashyn3m3qswh" path="res://sprites/temptiles.png" id="1_cd2hp"]
+[ext_resource type="Script" uid="uid://df7wwb2bbiwth" path="res://scripts/playerui.gd" id="1_vbhnb"]
+[ext_resource type="Texture2D" uid="uid://dp2gj3xi5piyq" path="res://sprites/key.png" id="2_bro7m"]
+[ext_resource type="FontFile" uid="uid://brbjobyebppsp" path="res://fonts/Minecraft.ttf" id="3_bro7m"]
+[ext_resource type="Texture2D" uid="uid://bmaysjp8jrt7g" path="res://sprites/yarn.png" id="3_vbhnb"]
+
+[node name="Camera2D" type="Camera2D" unique_id=1956626379]
+zoom = Vector2(4, 4)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=31662979]
+script = ExtResource("1_vbhnb")
+
+[node name="Temptiles" type="Sprite2D" parent="CanvasLayer" unique_id=1853634694]
+position = Vector2(1024, 648)
+scale = Vector2(16, 3.75)
+texture = ExtResource("1_cd2hp")
+
+[node name="Key" type="Sprite2D" parent="CanvasLayer" unique_id=1149349758]
+position = Vector2(1056, 616)
+scale = Vector2(4.0000024, 3.999999)
+texture = ExtResource("2_bro7m")
+
+[node name="Label" type="Label" parent="CanvasLayer/Key" unique_id=1869995919]
+offset_left = 8.0
+offset_top = -5.9999986
+offset_right = 24.0
+offset_bottom = 10.000002
+theme_override_fonts/font = ExtResource("3_bro7m")
+theme_override_font_sizes/font_size = 13
+text = "00"
+horizontal_alignment = 2
+vertical_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Yarn" type="Sprite2D" parent="CanvasLayer" unique_id=1822013624]
+position = Vector2(928, 616)
+scale = Vector2(3.999997, 4.0000005)
+texture = ExtResource("3_vbhnb")
+
+[node name="Label" type="Label" parent="CanvasLayer/Yarn" unique_id=218225283]
+offset_left = 8.0
+offset_top = -6.0
+offset_right = 24.0
+offset_bottom = 10.0
+theme_override_fonts/font = ExtResource("3_bro7m")
+theme_override_font_sizes/font_size = 13
+text = "00"
+horizontal_alignment = 2
+vertical_alignment = 2
+metadata/_edit_use_anchors_ = true
